@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        
+        <div class="section">
+            <h5 class="center-align">Cadastro Aluno</h5>
+        </div>
+        <div class="divider"></div>
+
+        <form class="col s12" method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_name" name=name type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="matriculation" name=matriculation type="text" class="validate" required>
+                    <label for="matriculation"> Matriculation</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" name=email type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name=leader required>
+                        <option value="" disabled selected>Choose your option</option>
+                        {% for choice in form.leader %}
+                        {{choice}}
+                        {% endfor %}
+                    </select>
+                    <label for='leader'>Leader</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name=coorientator>
+                        <option value="" disabled selected>Choose your option</option>
+                        {% for choice in form.leader %}
+                        {{choice}}
+                        {% endfor %}
+                    </select>
+                    <label for='coorientator'>coorientator</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar</button>
+        </form>
+
+        <script>
+            $(document).ready(function () {
+                $('select').formSelect();
+            });
+        </script>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock body %}

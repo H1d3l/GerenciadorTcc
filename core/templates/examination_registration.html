@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="row">
+    <form class="col s12" method = "post">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="input-field col s6">
+            <select name= student >
+                <option value="" disabled selected>Choose your option</option>
+                {% for choice in form.student %}
+                    {{choice}}
+                {% endfor %}
+            </select>
+            <label for= 'student'>Name Student</label>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="input-field col s6">
+            <select multiple name = member>
+            <option value="" disabled >Choose your option</option>
+                {% for choice in form.member %}
+                    {{choice}}
+                {% endfor %}
+            </select>
+            <label>Members</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="text" class="datepicker" name = expected_date>
+            <label>Date</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="time" class="timepicker" name = expected_time>
+            <label>Time</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <select name = status required>
+                <option value="" disabled selected>Choose your option</option>
+                {% for choice in form.status %}
+                    {{choice}}
+                {% endfor %}
+            </select>
+            <label for= 'status'>Status</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <select name = course_coordinator >
+                <option value="" disabled selected>Choose your option</option>
+                {% for choice in form.course_coordinator %}
+                    {{choice}}
+                {% endfor %}
+            </select>
+            <label for= 'course_coordinator'>Course Coordinator</label>
+        </div>
+    </div>
+
+      <button class="btn waves-effect waves-light" type="submit">Submit</button>
+    </form>
+
+    <script>
+      $(document).ready(function(){
+            $('select').formSelect();
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd'});
+            $('.timepicker').timepicker({
+                twelveHour: false
+            });
+        });
+
+    </script>
+  </div>
+
+    
+{% endblock body %}
+    

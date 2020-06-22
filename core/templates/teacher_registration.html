@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="row">
+    <form class="col s12" method = "post">
+    {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="first_name" name = name type="text" class="validate" required>
+          <label for="first_name">First Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <select name= academic_degree required>
+                <option value="" disabled selected>Choose your option</option>
+                {% for choice in form.academic_degree %}
+                    {{choice}}
+                {% endfor %}
+            </select>
+            <label for= 'academic_degree'>academic_degree</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email" name=email type="email" class="validate" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </form>
+
+    <script>
+      $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+  </div>
+
+
+    
+{% endblock body %}
+    
