@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', IndexView.as_view(),name='index'),
     path('student_registration/', StudentRegistrationView.as_view(),name='student_registration'),
+    path('student/', StudentListView.as_view(),name='student'),
     path('teacher_registration/', TeacherRegistrationView.as_view(),name='teacher_registration'),
     path('project_registration/', ProjectRegistrationView.as_view(),name='project_registration'),
     path('examination_board_registration/', ExaminationBoardRegistrationView.as_view(),name='examination_board_registration'),

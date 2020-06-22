@@ -29,7 +29,12 @@ class StudentRegistrationView(generic.CreateView):
         if form.is_valid():
             model_instance = Student(**form.cleaned_data)
             model_instance.save()
-            return redirect('index')
+            return redirect('student')
+
+class StudentListView(generic.ListView):
+    def get(self,request):
+        student_list = Student.objects.all()
+        return render(request,'student_list.html',{'student_list':student_list})
 
 class TeacherRegistrationView(generic.CreateView):
     
