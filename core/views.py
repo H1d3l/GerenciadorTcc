@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 
@@ -35,6 +36,15 @@ class StudentListView(generic.ListView):
     def get(self,request):
         student_list = Student.objects.all()
         return render(request,'student_list.html',{'student_list':student_list})
+
+
+class StudentUpdateView(generic.UpdateView):
+    model = Student
+    fields = "__all__"
+    template_name = "student_update.html"
+    success_url = reverse_lazy('student')
+
+
 
 class TeacherRegistrationView(generic.CreateView):
     

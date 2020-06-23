@@ -15,7 +15,7 @@
                                 <i class="left align medium material-icons">account_circle</i>
                                 <br>
                                 <p>{{student.name}}</p>
-                                <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+                                <a href="{% url 'student_update' pk=student.pk %}" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>
 
                         {% endfor %}
