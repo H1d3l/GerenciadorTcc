@@ -37,6 +37,10 @@ class StudentListView(generic.ListView):
         student_list = Student.objects.all()
         return render(request,'student_list.html',{'student_list':student_list})
 
+class StudentDetailView(generic.DetailView):
+    model = Student
+    template_name = 'student_detail.html'
+
 
 class StudentUpdateView(generic.UpdateView):
     model = Student
@@ -44,6 +48,10 @@ class StudentUpdateView(generic.UpdateView):
     template_name = "student_update.html"
     success_url = reverse_lazy('student')
 
+class StudentDeleteView(generic.DeleteView):
+    model = Student
+    template_name = "student_confirm_delete.html"
+    success_url = 'student'
 
 
 class TeacherRegistrationView(generic.CreateView):

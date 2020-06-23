@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="col s12 ">
+            <h5 class="header center-align">{{student.name}}</h5>
+            <div class="card horizontal">
+            <div class="card-stacked">
+                <div class="card-content">
+                Matricula: {{student.matriculation}}<br>
+                Email:{{student.email}}<br>
+                Orientador:{{student.leader}}<br>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'student_update' pk=student.pk %}" class="secondary-content"><i class="material-icons">edit</i></a>
+                    <a href="{% url 'student_delete' pk=student.pk %}" class="secondary-content"><i class="material-icons">delete</i></a>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    
+    
+{% endblock body %}
