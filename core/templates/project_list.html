@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+        <div class="row">
+
+                <div class="section">
+                        <h5 class="center-align">Projetos Cadastrados</h5>
+                </div>
+                <ul class="collection">
+
+                        {% for project in project_list %}
+                        <li class="collection-item avatar">
+                                <i class="left align medium material-icons">account_circle</i>
+                                <br>
+                                <a href="{% url 'project_detail' pk=project.pk %}"><p>{{project.name_project}}</p></a>
+                                
+                        </li>
+
+                        {% endfor %}
+
+                </ul>
+        </div>
+        <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red" href="{% url 'project_registration' %}">
+                        <i class="large material-icons">add</i>
+                </a>
+        </div>
+</div>
+
+
+
+
+{% endblock body %}

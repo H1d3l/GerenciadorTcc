@@ -18,7 +18,6 @@ class IndexView(generic.ListView):
         examination_board = ExaminationBoard.objects.all()
         return render(request,'index.html',{'examination_board':examination_board})
 
-
 class StudentRegistrationView(generic.CreateView):
 
     def get(self,request):
@@ -66,8 +65,6 @@ class TeacherRegistrationView(generic.CreateView):
             model_instance.save()
             return redirect('index')
 
-
-
 class TeacherListView(generic.ListView):
     def get(self,request):
         teacher_list = Teacher.objects.all()
@@ -76,7 +73,6 @@ class TeacherListView(generic.ListView):
 class TeacherDetailView(generic.DetailView):
     model = Teacher
     template_name = 'teacher_detail.html'
-
 
 class TeacherUpdateView(generic.UpdateView):
     model = Teacher
@@ -88,8 +84,6 @@ class TeacherDeleteView(generic.DeleteView):
     model = Teacher
     template_name = "teacher_confirm_delete.html"
     success_url = reverse_lazy('teacher')
-
-
 
 
 class ProjectRegistrationView(generic.CreateView):
@@ -104,6 +98,27 @@ class ProjectRegistrationView(generic.CreateView):
             model_instance = Project(**form.cleaned_data)
             model_instance.save()
             return redirect('index')
+
+class ProjectListView(generic.ListView):
+    def get(self,request):
+        project_list = Project.objects.all()
+        return render(request,'project_list.html',{'project_list':project_list})
+
+class ProjectDetailView(generic.DetailView):
+    model = Project
+    template_name = 'project_detail.html'
+
+class ProjectUpdateView(generic.UpdateView):
+    model = Project
+    fields = "__all__"
+    template_name = "project_update.html"
+    success_url = reverse_lazy('project')
+
+class ProjectDeleteView(generic.DeleteView):
+    model = Project
+    template_name = "project_confirm_delete.html"
+    success_url = reverse_lazy('project')
+
 
 
 class ExaminationBoardRegistrationView(generic.CreateView):

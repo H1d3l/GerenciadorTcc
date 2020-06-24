@@ -2,61 +2,67 @@
 
 
 {% block body %}
-<div class="row">
-    <form class="col s12" method = "post">
-    {% csrf_token %}
-
+<div class="container">
     <div class="row">
-        <div class="input-field col s6">
-            <select name= name_student >
-                <option value="" disabled selected>Choose your option</option>
-                {% for choice in form.name_student %}
-                    {{choice}}
-                {% endfor %}
-            </select>
-            <label for= 'name_student'>Name Student</label>
+
+        <div class="section">
+            <h5 class="center-align">Cadastro Projeto</h5>
         </div>
+        <div class="divider"></div>
+
+        <form class="col s12" method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name=name_student>
+                        <option value="" disabled selected>Choose your option</option>
+                        {% for choice in form.name_student %}
+                        {{choice}}
+                        {% endfor %}
+                    </select>
+                    <label for='name_student'>Name Student</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="name_project" name=name_project type="text" class="validate" required>
+                    <label for="name_project"> Name Project</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name=type_project required>
+                        <option value="" disabled selected>Choose your option</option>
+                        {% for choice in form.type_project %}
+                        {{choice}}
+                        {% endfor %}
+                    </select>
+                    <label for='type_project'>Type Project</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name=defense_model>
+                        <option value="" disabled selected>Choose your option</option>
+                        {% for choice in form.defense_model %}
+                        {{choice}}
+                        {% endfor %}
+                    </select>
+                    <label for='defense_model'>Defense Model</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        </form>
+
+        <script>
+            $(document).ready(function () {
+                $('select').formSelect();
+            });
+        </script>
     </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input  id="name_project" name = name_project type="text" class="validate" required>
-            <label for="name_project"> Name Project</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <select name= type_project required>
-                <option value="" disabled selected>Choose your option</option>
-                {% for choice in form.type_project %}
-                    {{choice}}
-                {% endfor %}
-            </select>
-            <label for= 'type_project'>Type Project</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-            <select name= defense_model >
-                <option value="" disabled selected>Choose your option</option>
-                {% for choice in form.defense_model %}
-                    {{choice}}
-                {% endfor %}
-            </select>
-            <label for= 'defense_model'>Defense Model</label>
-        </div>
-    </div>
-
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-    </form>
-
-    <script>
-      $(document).ready(function(){
-            $('select').formSelect();
-        });
-    </script>
-  </div>
-
+</div>
 {% endblock body %}
-    

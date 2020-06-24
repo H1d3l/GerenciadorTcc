@@ -34,6 +34,11 @@ urlpatterns = [
     path('teacher/<int:pk>/delete/', TeacherDeleteView.as_view(),name='teacher_delete'),
 
     path('project_registration/', ProjectRegistrationView.as_view(),name='project_registration'),
+    path('project/',  ProjectListView.as_view(),name='project'),
+    path('project/<int:pk>/detail/',  ProjectDetailView.as_view(),name='project_detail'),
+    path('project/<int:pk>/update/',  ProjectUpdateView.as_view(),name='project_update'),
+    path('project/<int:pk>/delete/',  ProjectDeleteView.as_view(),name='project_delete'),
+
     path('examination_board_registration/', ExaminationBoardRegistrationView.as_view(),name='examination_board_registration'),
 
 ]
