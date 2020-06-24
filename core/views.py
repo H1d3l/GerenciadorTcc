@@ -41,7 +41,6 @@ class StudentDetailView(generic.DetailView):
     model = Student
     template_name = 'student_detail.html'
 
-
 class StudentUpdateView(generic.UpdateView):
     model = Student
     fields = "__all__"
@@ -66,6 +65,30 @@ class TeacherRegistrationView(generic.CreateView):
             model_instance = Teacher(**form.cleaned_data)
             model_instance.save()
             return redirect('index')
+
+
+
+class TeacherListView(generic.ListView):
+    def get(self,request):
+        teacher_list = Teacher.objects.all()
+        return render(request,'teacher_list.html',{'teacher_list':teacher_list})
+
+class TeacherDetailView(generic.DetailView):
+    model = Teacher
+    template_name = 'teacher_detail.html'
+
+
+class TeacherUpdateView(generic.UpdateView):
+    model = Teacher
+    fields = "__all__"
+    template_name = "teacher_update.html"
+    success_url = reverse_lazy('teacher')
+
+class TeacherDeleteView(generic.DeleteView):
+    model = Teacher
+    template_name = "teacher_confirm_delete.html"
+    success_url = reverse_lazy('teacher')
+
 
 
 

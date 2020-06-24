@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+        <div class="row">
+
+                <div class="section">
+                        <h5 class="center-align">Professores Cadastrados</h5>
+                </div>
+                <ul class="collection">
+
+                        {% for teacher in teacher_list %}
+                        <li class="collection-item avatar">
+                                <i class="left align medium material-icons">account_circle</i>
+                                <br>
+                                <a href="{% url 'teacher_detail' pk=teacher.pk %}"><p>{{teacher.name}}</p></a>
+                                
+                        </li>
+
+                        {% endfor %}
+
+                </ul>
+        </div>
+        <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red" href="{% url 'teacher_registration' %}">
+                        <i class="large material-icons">add</i>
+                </a>
+        </div>
+</div>
+
+
+
+
+{% endblock body %}

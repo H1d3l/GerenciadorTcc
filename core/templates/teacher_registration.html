@@ -2,30 +2,38 @@
 
 
 {% block body %}
-<div class="row">
-    <form class="col s12" method = "post">
-    {% csrf_token %}
+<div class="container">
+
+  <div class="row">
+    <form class="col s12" method="post">
+
+      {% csrf_token %}
+
       <div class="row">
-        <div class="input-field col s6">
-          <input  id="first_name" name = name type="text" class="validate" required>
+        <div class="section">
+          <h5 class="center-align">Cadastro Professor</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="input-field ">
+          <input id="first_name" name=name type="text" class="validate" required>
           <label for="first_name">First Name</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
-            <select name= academic_degree required>
-                <option value="" disabled selected>Choose your option</option>
-                {% for choice in form.academic_degree %}
-                    {{choice}}
-                {% endfor %}
-            </select>
-            <label for= 'academic_degree'>academic_degree</label>
+        <div class="input-field ">
+          <select name=academic_degree required>
+            <option value="" disabled selected>Choose your option</option>
+            {% for choice in form.academic_degree %}
+            {{choice}}
+            {% endfor %}
+          </select>
+          <label for='academic_degree'>academic_degree</label>
         </div>
 
       </div>
 
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field  ">
           <input id="email" name=email type="email" class="validate" required>
           <label for="email">Email</label>
         </div>
@@ -34,13 +42,12 @@
     </form>
 
     <script>
-      $(document).ready(function(){
-            $('select').formSelect();
-        });
+      $(document).ready(function () {
+        $('select').formSelect();
+      });
     </script>
   </div>
 
+</div>
 
-    
 {% endblock body %}
-    
