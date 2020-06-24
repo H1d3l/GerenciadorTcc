@@ -19,8 +19,8 @@ class Student(models.Model):
     name = models.CharField(max_length=200)
     matriculation = models.CharField(max_length=200)
     email = models.EmailField()
-    leader = models.ForeignKey(Teacher,on_delete=models.DO_NOTHING,related_name='student_leader')
-    coorientator = models.ForeignKey(Teacher,blank=True, null=True,on_delete=models.DO_NOTHING,related_name='student_coorientator')
+    leader = models.ForeignKey(Teacher,on_delete=models.CASCADE,related_name='student_leader')
+    coorientator = models.ForeignKey(Teacher,blank=True, null=True,on_delete=models.CASCADE,related_name='student_coorientator')
 
     def __str__(self):
         return self.name
@@ -38,7 +38,7 @@ class Project(models.Model):
     ('SoftwareReport','Software Report'),
     ('Others','Others')
 ]
-    name_student = models.OneToOneField(Student,on_delete=models.DO_NOTHING)
+    name_student = models.OneToOneField(Student,on_delete=models.CASCADE)
     name_project = models.CharField(max_length=1000)
     type_project = models.CharField(max_length=200,choices=TYPE_PROJECT)
     defense_model = models.CharField(max_length=200,choices=DEFENSE_MODEL)
@@ -53,7 +53,7 @@ class ExaminationBoard(models.Model):
         ('Confirmada','Confirmada'),
         ('Concluida','Concluida')
     ]
-    student = models.OneToOneField(Student,on_delete=models.DO_NOTHING)
+    student = models.OneToOneField(Student,on_delete=models.CASCADE)
     member = models.ManyToManyField(Teacher,related_name="examinationboard_member")
     expected_date = models.DateField()
     expected_time = models.TimeField()

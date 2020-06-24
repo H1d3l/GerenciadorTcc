@@ -51,7 +51,7 @@ class StudentUpdateView(generic.UpdateView):
 class StudentDeleteView(generic.DeleteView):
     model = Student
     template_name = "student_confirm_delete.html"
-    success_url = 'student'
+    success_url = reverse_lazy('student')
 
 
 class TeacherRegistrationView(generic.CreateView):
