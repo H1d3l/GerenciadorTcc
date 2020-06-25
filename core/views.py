@@ -122,6 +122,7 @@ class ProjectDeleteView(generic.DeleteView):
 
 
 class ExaminationBoardRegistrationView(generic.CreateView):
+
     
     def get(self,request):
         form  = ExaminationBoardRegistrationForm()
@@ -151,3 +152,24 @@ class ExaminationBoardRegistrationView(generic.CreateView):
         else:
             
             return HttpResponse('invalido')
+
+
+class ExaminationBoardListView(generic.ListView):
+    def get(self,request):
+        examination_list = ExaminationBoard.objects.all()
+        return render(request,'examination_list.html',{'examination_list':examination_list})
+
+class ExaminationBoardDetailView(generic.DetailView):
+    model = ExaminationBoard
+    template_name = 'examination_detail.html'
+
+class ExaminationBoardUpdateView(generic.UpdateView):
+    model = ExaminationBoard
+    fields = "__all__"
+    template_name = "examination_update.html"
+    success_url = reverse_lazy('examination')
+
+class ExaminationBoardDeleteView(generic.DeleteView):
+    model = ExaminationBoard
+    template_name = "examination_confirm_delete.html"
+    success_url = reverse_lazy('examination')

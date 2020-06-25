@@ -39,6 +39,11 @@ urlpatterns = [
     path('project/<int:pk>/update/',  ProjectUpdateView.as_view(),name='project_update'),
     path('project/<int:pk>/delete/',  ProjectDeleteView.as_view(),name='project_delete'),
 
-    path('examination_board_registration/', ExaminationBoardRegistrationView.as_view(),name='examination_board_registration'),
+    path('examination_registration/', ExaminationBoardRegistrationView.as_view(),
+    name='examination_registration'),
+    path('examination/',  ExaminationBoardListView.as_view(),name='examination'),
+    path('examination/<int:pk>/detail/',  ExaminationBoardDetailView.as_view(),name='examination_detail'),
+    path('examination/<int:pk>/update/',  ExaminationBoardUpdateView.as_view(),name='examination_update'),
+    path('examination/<int:pk>/delete/',  ExaminationBoardDeleteView.as_view(),name='examination_delete'),
 
 ]

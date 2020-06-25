@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="col s12 ">
+            <h5 class="header center-align">OI</h5>
+            <div class="card horizontal">
+            <div class="card-stacked">
+                <div class="card-content">
+                    {{examinationboard.student}}<br>
+                    {{examinationboard.status}}<br>
+                    {{examinationboard.expected_date}}<br>
+                  
+                </div>
+            </div>
+                <div class="card-action">
+                    <a href="{% url 'examination_update' pk=examinationboard.pk %}" class="secondary-content"><i class="material-icons">edit</i></a>
+                    <a href="{% url 'examination_delete' pk=examinationboard.pk %}" class="secondary-content"><i class="material-icons">delete</i></a>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    
+    
+{% endblock body %}
